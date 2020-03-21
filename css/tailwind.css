@@ -5,9 +5,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* purgecss start ignore */
 body,
 #__next {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
+/* purgecss end ignore */
