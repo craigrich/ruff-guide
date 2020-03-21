@@ -1,0 +1,35 @@
+function Footer() {
+  return (
+    <footer className="bg-black text-white h-56 pt-12 text-sm mt-20">
+      <div className="container mx-auto">
+        <div className="px-4">
+          <div className="md:flex justify-between ">
+            <ul>
+              <li className="mb-3 font-bold">Country Escapes</li>
+              <li className="mb-2">
+                <a href="">Privacy Policy</a>
+              </li>
+              <li className="mb-2">
+                <a href="">About Us</a>
+              </li>
+              <li className="mb-2">
+                <a href="">Contact</a>
+              </li>
+            </ul>
+            <ul>
+              <li className="mb-3 font-bold">Follow Us</li>
+              <li className="mb-2">
+                <a href="">Instagram</a>
+              </li>
+              <li className="mb-2">
+                <a href="">Facebook</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;

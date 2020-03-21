@@ -1,15 +1,18 @@
-import { Layout } from "components/Layout";
-import { CriticHighlights } from "components/CriticHighlights";
-import { Box, Heading, Grid, DataTable, Text, Meter } from "grommet";
-import { NewReviews } from "components/NewReviews";
+import { Layout } from 'components/Layout';
+import { CriticHighlights } from 'components/CriticHighlights';
+import { Box, Heading, Grid, DataTable, Text, Meter } from 'grommet';
+import { NewReviews } from 'components/NewReviews';
 
 const Home = () => (
   <Layout>
     <CriticHighlights />
+    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Button
+    </button>
     <Box
-      margin={{ vertical: "large" }}
+      margin={{ vertical: 'large' }}
       pad="large"
-      background={{ color: "brand", opacity: true }}
+      background={{ color: 'brand', opacity: true }}
     >
       <Heading alignSelf="center" margin="none" level={4}>
         Advert
@@ -19,11 +22,11 @@ const Home = () => (
     <Grid
       fill
       areas={[
-        { name: "reviews", start: [0, 0], end: [0, 0] },
-        { name: "advert", start: [1, 0], end: [1, 0] }
+        { name: 'reviews', start: [0, 0], end: [0, 0] },
+        { name: 'advert', start: [1, 0], end: [1, 0] }
       ]}
-      columns={["flex", "1/4"]}
-      rows={["flex"]}
+      columns={['flex', '1/4']}
+      rows={['flex']}
       gap="medium"
     >
       <Box gridArea="reviews">
@@ -32,7 +35,7 @@ const Home = () => (
       <Box
         gridArea="advert"
         height="800px"
-        background={{ color: "brand", opacity: true }}
+        background={{ color: 'brand', opacity: true }}
       >
         <Heading margin="none" alignSelf="center" level={4}>
           Advert
