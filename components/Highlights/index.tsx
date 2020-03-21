@@ -9,7 +9,10 @@ function Highlights({ title, description, count = 4 }) {
       </div>
       <div className="md:flex justify-between">
         {[...new Array(count)].map((value, index) => (
-          <Highlight key={index} />
+          <Highlight
+            key={index}
+            href={count === 3 ? '/region/devon' : '/hotel/123'}
+          />
         ))}
       </div>
     </article>

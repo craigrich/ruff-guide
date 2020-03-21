@@ -13,12 +13,11 @@
     "next": "^9.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-grid-gallery": "^0.5.5",
     "tailwindcss": "^1.2.0"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
-    "isomorphic-unfetch": "^3.0.0",
-    "jsdom": "^16.2.1",
     "@types/next": "^9.0.0",
     "@types/node": "^13.9.2",
     "@types/react": "^16.9.25",
@@ -35,6 +34,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "eslint-plugin-unicorn": "^17.2.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "jsdom": "^16.2.1",
     "postcss-import": "^12.0.1",
     "prettier": "^1.19.1",
     "typescript": "^3.8.3"

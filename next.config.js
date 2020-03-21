@@ -6,6 +6,7 @@ module.exports = {
     const paths = {
       '/': { page: '/' },
       '/region/devon': { page: '/Region/[id]' }
+      '/hotel/123': { page: '/Hotel/[id]' }
     };
     // Use this for dymanic routes
     // const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');

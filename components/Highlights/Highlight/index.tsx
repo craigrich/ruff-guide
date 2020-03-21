@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-function Highlight() {
+function Highlight({ href }) {
   return (
-    <Link href="/region/devon">
+    <Link href={href}>
       <div className="lg:w-1/3 md:mx-4 cursor-pointer">
         <img
           className=" w-full object-cover object-center rounded-lg"
