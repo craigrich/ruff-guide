@@ -5,7 +5,7 @@ module.exports = {
   exportPathMap: async function() {
     const paths = {
       '/': { page: '/' },
-      '/region/devon': { page: '/Region/[id]' }
+      '/region/devon': { page: '/Region/[id]' },
       '/hotel/123': { page: '/Hotel/[id]' }
     };
     // Use this for dymanic routes
