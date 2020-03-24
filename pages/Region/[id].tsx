@@ -22,8 +22,8 @@ export const Region = ({ regionData }: Props) => {
         <h1 className="text-6xl capitalize text-center">{fields.name}</h1>
         <p className="text-xl text-center ">{fields.description}</p>
         <div className="flex flex-wrap mt-8">
-          {[...new Array(3)].map((hotel) => (
-            <div className="w-1/3 p-4" key={hotel.sys.id}>
+          {[...new Array(3)].map((index) => (
+            <div className="w-1/3 p-4" key={index}>
               <img
                 className="w-full object-cover object-center rounded-lg"
                 src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80"

@@ -10,7 +10,6 @@ const client = createClient({
 });
 
 export const Hotel = (props) => {
-  console.log('check props', props);
   return (
     <Layout>
       <div className="container mx-auto">
