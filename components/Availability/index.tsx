@@ -10,7 +10,7 @@ function Availability() {
             title="Link"
             style={{
               backgroundImage:
-                'url(https://via.placeholder.com/800x600/EDF2F7/E2E8F0/&amp;text=Image)'
+                'url(https://via.placeholder.com/800x600/EDF2F7/E2E8F0/&amp;text=Image)',
             }}
           />
         </div>

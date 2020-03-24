@@ -2,8 +2,15 @@ import Layout from 'components/Layout';
 
 import Gallery from 'components/Gallery';
 import Availability from 'components/Availability';
+import { createClient } from 'contentful';
 
-export const Hotel = () => {
+const client = createClient({
+  space: process.env.CONTENTFUL_SPACE,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+});
+
+export const Hotel = (props) => {
+  console.log('check props', props);
   return (
     <Layout>
       <div className="container mx-auto">
@@ -19,5 +26,21 @@ export const Hotel = () => {
     </Layout>
   );
 };
+
+export async function getStaticPaths() {
+  return {
+    paths: ['/hotel/5x2yCOUmOdDG2nDr4UqXA'],
+    fallback: false
+  };
+}
+
+export async function getStaticProps() {
+  const hotelData = await client.getEntry('5x2yCOUmOdDG2nDr4UqXA');
+  return {
+    props: {
+      hotelData
+    }
+  };
+}
 
 export default Hotel;

@@ -1,6 +1,18 @@
+import { Region, Hotel } from 'contentful-types';
+import { Entry } from 'contentful';
+import { isArray } from 'util';
 import Highlight from './Highlight';
 
-function Highlights({ title, description, count = 4 }) {
+interface Props {
+  title: string;
+  description: string;
+  items: (Entry<Region> | Entry<Hotel>)[];
+}
+
+function Highlights({ title, description, items }: Props) {
+  if (!isArray(items)) {
+    return null;
+  }
   return (
     <article className="px-4 md:-mx-4 mt-12">
       <div className="px-4">
@@ -8,11 +20,8 @@ function Highlights({ title, description, count = 4 }) {
         <p className="mb-4">{description}</p>
       </div>
       <div className="md:flex justify-between">
-        {[...new Array(count)].map((value, index) => (
-          <Highlight
-            key={index}
-            href={count === 3 ? '/region/devon' : '/hotel/123'}
-          />
+        {items.map((item: Entry<Region> | Entry<Hotel>) => (
+          <Highlight key={item.sys.id} item={item} />
         ))}
       </div>
     </article>
