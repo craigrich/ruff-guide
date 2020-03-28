@@ -1,7 +1,7 @@
 import { Region, Hotel } from 'contentful-types';
+import Highlight from 'components/Highlight';
 import { Entry } from 'contentful';
 import { isArray } from 'util';
-import Highlight from './Highlight';
 
 interface Props {
   title: string;

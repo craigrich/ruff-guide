@@ -1,6 +1,6 @@
 import { Asset, Entry } from 'contentful';
 
-type arrayOfEntries<T> = Array<Entry<T>>;
+export type arrayOfEntries<T> = Array<Entry<T>>;
 
 export interface HomePageLayout {
   name: string;
@@ -18,7 +18,7 @@ export interface Room {
 export interface Hotel {
   name: string;
   description: string;
-  gallery: Array<Asset>;
+  gallery: Asset[];
   rooms: arrayOfEntries<Room>;
 }
 

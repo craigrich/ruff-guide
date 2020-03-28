@@ -1,11 +1,13 @@
+import Link from 'next/link';
+
 function Header() {
   return (
     <header className="container mx-auto">
       <div className="px-4 my-5">
         <nav className="flex justify-between items-center">
-          <div className="text-gray-900 font-black text-3xl">
-            Country Escapes
-          </div>
+          <Link href="/">
+            <a className="text-gray-900 font-black text-3xl">Country Escapes</a>
+          </Link>
           <div>
             <a href="#home" className="text-md font-bold">
               CONTACT

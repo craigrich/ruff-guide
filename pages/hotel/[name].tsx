@@ -1,35 +1,33 @@
-import Layout from 'components/Layout';
+import { Hotel } from 'contentful-types';
+import { EntryCollection, Entry } from 'contentful';
 
+import encodeName from 'lib/encodeName';
+import client from 'lib/contentfulClient';
+import Layout from 'components/Layout';
 import Gallery from 'components/Gallery';
 import Availability from 'components/Availability';
-import { createClient, EntryCollection } from 'contentful';
-import { Hotel as HotelType } from 'contentful-types';
-import encodeName from 'lib/encodeName';
 
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-});
+interface Props {
+  hotelData: Entry<Hotel>;
+}
 
-export const Hotel = (props) => {
+function HotelPage({ hotelData }: Props) {
+  const { fields } = hotelData;
+
   return (
     <Layout>
       <div className="container mx-auto">
-        <h1 className="text-6xl capitalize text-center">Pascoe House</h1>
-        <p className="text-xl text-center ">
-          Located in Crediton in the Devon region, Gunstone House has a garden.
-          The property is 30 miles from Sidmouth, and guests benefit from
-          complimentary WiFi and private parking available on site.
-        </p>
-        <Gallery />
-        <Availability />
+        <h1 className="text-6xl capitalize text-center">{fields.name}</h1>
+        <p className="text-xl text-center ">{fields.description}</p>
+        <Gallery images={fields.gallery} />
+        <Availability rooms={fields.rooms} />
       </div>
     </Layout>
   );
-};
+}
 
 export async function getStaticPaths() {
-  const hotels: EntryCollection<HotelType> = await client.getEntries({
+  const hotels: EntryCollection<Hotel> = await client.getEntries({
     content_type: 'hotel'
   });
   return {
@@ -41,7 +39,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const hotels: EntryCollection<HotelType> = await client.getEntries({
+  const hotels: EntryCollection<Hotel> = await client.getEntries({
     content_type: 'hotel'
   });
   const hotelData = hotels.items.find(
@@ -54,4 +52,4 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default Hotel;
+export default HotelPage;
