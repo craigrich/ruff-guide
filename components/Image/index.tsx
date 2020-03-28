@@ -3,10 +3,10 @@ import useProgressiveImage from 'lib/useProgressiveImage';
 
 interface Props {
   image: Asset;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
-function Image({ image, onClick }: Props) {
+function Image({ image, onClick = () => {} }: Props) {
   const [source, hasLoaded] = useProgressiveImage({
     src: `${image.fields.file.url}`,
     fallbackSrc: `${image.fields.file.url}?q=10`
@@ -14,7 +14,7 @@ function Image({ image, onClick }: Props) {
 
   return (
     <div
-      className="block w-full h-full bg-grey-dark bg-no-repeat bg-center bg-cover cursor-pointer"
+      className="block w-full h-full bg-grey-dark bg-no-repeat bg-center bg-cover cursor-pointer rounded-md overflow-hidden"
       onClick={onClick}
       onKeyDown={(event) => {
         if (event.keyCode === 13) onClick();

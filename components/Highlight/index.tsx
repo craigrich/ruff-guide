@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { Entry, Asset } from 'contentful';
+import { Entry } from 'contentful';
 import { Hotel, Region } from 'contentful-types';
-import { lookup } from 'fp-ts/lib/Array';
-import { map, getOrElse } from 'fp-ts/lib/Option';
-import { pipe } from 'fp-ts/lib/pipeable';
 import encodeName from 'lib/encodeName';
+import Image from 'components/Image';
 
 interface Props {
   item: Entry<Hotel> | Entry<Region>;
@@ -13,23 +11,15 @@ interface Props {
 function Highlight({ item }: Props) {
   const { fields, sys } = item;
   const contentType = sys.contentType.sys.id;
-  const imgHref = pipe(
-    lookup(0, fields.gallery),
-    map((image: Asset) => image.fields.file.url),
-    getOrElse(() => 'http://via.placeholder.com/640x360')
-  );
-
   return (
     <Link
       as={`/${contentType}/${encodeName(fields.name)}`}
       href={`/${contentType}/[name]`}
     >
-      <div className="lg:w-1/3 md:mx-4 cursor-pointer">
-        <img
-          className="w-full object-cover object-center rounded-lg"
-          src={imgHref}
-          alt="featuredImage"
-        />
+      <div className="lg:w-1/3 md:mx-4 lg:h-1/3 cursor-pointer ">
+        <div className="h-40 lg:h-56 ">
+          <Image image={fields.gallery[0]} />
+        </div>
         <div className="pt-4 pb-0 h-auto md:h-40 lg:h-40">
           <div className="font-semibold mb-2 text-lg md:text-base lg:text-lg ">
             {fields.name}
