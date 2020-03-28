@@ -1,6 +1,6 @@
 import Layout from 'components/Layout';
 
-import { createClient, Entry } from 'contentful';
+import { createClient, Entry, EntryCollection } from 'contentful';
 import { Region as RegionType } from 'contentful-types';
 
 const client = createClient({
@@ -14,8 +14,6 @@ interface Props {
 
 export const Region = ({ regionData }: Props) => {
   const { fields } = regionData;
-  console.log('regionData', regionData);
-
   return (
     <Layout>
       <div className="container mx-auto flex-wrap">
@@ -47,8 +45,12 @@ export const Region = ({ regionData }: Props) => {
 };
 
 export async function getStaticPaths() {
+  const regions: EntryCollection<RegionType> = await client.getEntries({
+    content_type: 'region'
+  });
+
   return {
-    paths: ['/region/7fiDk62p6Hgz5JvV35uynx'],
+    paths: regions.items.map((region) => `/region/${region.sys.id}`),
     fallback: false
   };
 }

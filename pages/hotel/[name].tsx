@@ -2,7 +2,9 @@ import Layout from 'components/Layout';
 
 import Gallery from 'components/Gallery';
 import Availability from 'components/Availability';
-import { createClient } from 'contentful';
+import { createClient, EntryCollection } from 'contentful';
+import { Hotel as HotelType } from 'contentful-types';
+import encodeName from 'lib/encodeName';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE,
@@ -27,14 +29,26 @@ export const Hotel = (props) => {
 };
 
 export async function getStaticPaths() {
+  const hotels: EntryCollection<HotelType> = await client.getEntries({
+    content_type: 'hotel'
+  });
   return {
-    paths: ['/hotel/5x2yCOUmOdDG2nDr4UqXA'],
+    paths: hotels.items.map(
+      (hotel) => `/hotel/${encodeName(hotel.fields.name)}`
+    ),
     fallback: false
   };
 }
 
-export async function getStaticProps() {
-  const hotelData = await client.getEntry('5x2yCOUmOdDG2nDr4UqXA');
+export async function getStaticProps({ params }) {
+  const hotels: EntryCollection<HotelType> = await client.getEntries({
+    content_type: 'hotel'
+  });
+
+  const hotelData = hotels.items.find(
+    (hotel) => encodeName(hotel.fields.name) === params.name
+  );
+
   return {
     props: {
       hotelData

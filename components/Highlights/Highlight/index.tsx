@@ -4,6 +4,7 @@ import { Hotel, Region } from 'contentful-types';
 import { lookup } from 'fp-ts/lib/Array';
 import { map, getOrElse } from 'fp-ts/lib/Option';
 import { pipe } from 'fp-ts/lib/pipeable';
+import encodeName from 'lib/encodeName';
 
 interface Props {
   item: Entry<Hotel> | Entry<Region>;
@@ -17,11 +18,11 @@ function Highlight({ item }: Props) {
     map((image: Asset) => image.fields.file.url),
     getOrElse(() => 'http://via.placeholder.com/640x360')
   );
-  console.log('item', item);
+
   return (
     <Link
-      // as={`/${contentType}/${fields.name}`}
-      href={`/${contentType}/${sys.id}`}
+      as={`/${contentType}/${encodeName(fields.name)}`}
+      href={`/${contentType}/[name]`}
     >
       <div className="lg:w-1/3 md:mx-4 cursor-pointer">
         <img
