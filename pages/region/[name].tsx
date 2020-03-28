@@ -2,6 +2,7 @@ import Layout from 'components/Layout';
 
 import { createClient, Entry, EntryCollection } from 'contentful';
 import { Region as RegionType } from 'contentful-types';
+import encodeName from 'lib/encodeName';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE,
@@ -48,16 +49,20 @@ export async function getStaticPaths() {
   const regions: EntryCollection<RegionType> = await client.getEntries({
     content_type: 'region'
   });
-
   return {
-    paths: regions.items.map((region) => `/region/${region.sys.id}`),
+    paths: regions.items.map(
+      (region) => `/region/${encodeName(region.fields.name)}`
+    ),
     fallback: false
   };
 }
 
-export async function getStaticProps() {
-  const regionData: Entry<RegionType> = await client.getEntry(
-    '7fiDk62p6Hgz5JvV35uynx'
+export async function getStaticProps({ params }) {
+  const regions: EntryCollection<RegionType> = await client.getEntries({
+    content_type: 'region'
+  });
+  const regionData = regions.items.find(
+    (region) => encodeName(region.fields.name) === params.name
   );
   return {
     props: {

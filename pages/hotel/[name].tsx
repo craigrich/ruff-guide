@@ -44,11 +44,9 @@ export async function getStaticProps({ params }) {
   const hotels: EntryCollection<HotelType> = await client.getEntries({
     content_type: 'hotel'
   });
-
   const hotelData = hotels.items.find(
     (hotel) => encodeName(hotel.fields.name) === params.name
   );
-
   return {
     props: {
       hotelData
