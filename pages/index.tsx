@@ -1,8 +1,7 @@
-import { createClient, Entry } from 'contentful';
+import { createClient, EntryCollection } from 'contentful';
 import Layout from 'components/Layout';
-import Highlights from 'components/Highlights';
-import Search from 'components/Search';
-import { HomePageLayout } from 'contentful-types';
+import { Post } from 'contentful-types';
+import PostCard from 'components/PostCard';
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE,
@@ -10,41 +9,26 @@ const client = createClient({
 });
 
 interface Props {
-  homepageData: Entry<HomePageLayout>;
+  postsData: EntryCollection<Post>;
 }
 
-function HomePage({ homepageData }: Props) {
+function HomePage({ postsData }: Props): JSX.Element {
   return (
-    <Layout title="Country Escapes">
-      <Search />
+    <Layout title="The Ruff Guide">
       <div className="container mx-auto">
-        <Highlights
-          title="Top Regions"
-          description="Explore the best places to stay in the UK countryside"
-          items={homepageData.fields.regions}
-        />
-        <Highlights
-          title="Featured Hotels"
-          description="See our favourite picks of luxury hideaways"
-          items={homepageData.fields.featuredHotels}
-        />
-        <Highlights
-          title="Foodie Highlights"
-          description="check out our selection of michelin star hotels"
-          items={homepageData.fields.foodieHighlights}
-        />
+        {postsData.items.map((post) => (
+          <PostCard key={post.sys.id} post={post} />
+        ))}
       </div>
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const homepageData: Entry<HomePageLayout> = await client.getEntry(
-    '4XYSEJlMN6WzB9blGoBXsY'
-  );
+  const postsData: EntryCollection<Post> = await client.getEntries();
   return {
     props: {
-      homepageData
+      postsData
     }
   };
 }

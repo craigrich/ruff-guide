@@ -1,30 +1,16 @@
-import { Asset, Entry } from 'contentful';
+import { Entry, Asset } from 'contentful';
 
-export type arrayOfEntries<T> = Array<Entry<T>>;
+export type ArrayOfEntries<T> = Array<Entry<T>>;
 
 export interface HomePageLayout {
   name: string;
-  regions: arrayOfEntries<Region>;
-  featuredHotels: arrayOfEntries<Hotel>;
-  foodieHighlights: arrayOfEntries<Hotel>;
+  posts: ArrayOfEntries<Post>;
 }
 
-export interface Room {
-  name: string;
-  gallery: Array<Asset>;
-  link: string;
-}
-
-export interface Hotel {
-  name: string;
-  description: string;
-  gallery: Asset[];
-  rooms: arrayOfEntries<Room>;
-}
-
-export interface Region {
-  name: string;
-  description: string;
-  gallery: Array<Asset>;
-  hotels: arrayOfEntries<Hotel>;
+export interface Post {
+  readonly title: string;
+  readonly location: string;
+  readonly heroImage: Asset;
+  readonly content: { data: any; content: any; nodeType: string };
+  readonly locReal: { lat: string; lon: string };
 }

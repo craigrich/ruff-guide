@@ -6,12 +6,12 @@ function Header() {
       <div className="px-4 my-5">
         <nav className="flex justify-between items-center">
           <Link href="/">
-            <a className="text-gray-900 font-black text-3xl">Country Escapes</a>
+            <a className="text-gray-900 font-black text-3xl">The Ruff Guide</a>
           </Link>
           <div>
-            <a href="#home" className="text-md font-bold">
-              CONTACT
-            </a>
+            {/* <a href="#home" className="text-md font-bold">
+              about
+            </a> */}
           </div>
         </nav>
       </div>

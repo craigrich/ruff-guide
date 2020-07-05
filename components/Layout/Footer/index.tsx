@@ -5,7 +5,7 @@ function Footer() {
         <div className="px-4">
           <div className="md:flex justify-between ">
             <ul>
-              <li className="mb-3 font-bold">Country Escapes</li>
+              <li className="mb-3 font-bold">The Ruff Guide</li>
               <li className="mb-2">
                 <a href="">Privacy Policy</a>
               </li>
