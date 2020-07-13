@@ -1,4 +1,4 @@
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS } from '@contentful/rich-text-types';
 import { Post } from 'contentful-types';
 import { EntryCollection, Entry } from 'contentful';
 import Image from 'components/Image';
@@ -24,7 +24,7 @@ const options = {
       const { url } = node.data.target.fields.file;
       return (
         <div className="my-8 flex justify-center">
-          <div className="w-1/3">
+          <div className="lg:w-1/3">
             <Image image={node.data.target} />
           </div>
         </div>
@@ -40,8 +40,12 @@ function PostPage({ postData }: Props) {
   return (
     <Layout>
       <div className="container mx-auto">
-        <h1 className="text-6xl capitalize text-center">{fields.title}</h1>
-        {documentToReactComponents(content, options)}
+        <h1 className="text-3xl lg:text-6xl capitalize text-center">
+          {fields.title}
+        </h1>
+        <div className="px-8 lg:px-0">
+          {documentToReactComponents(content, options)}
+        </div>
       </div>
     </Layout>
   );

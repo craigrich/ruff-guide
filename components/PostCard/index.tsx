@@ -13,8 +13,8 @@ function PostCard({ post }: Props): JSX.Element {
 
   return (
     <Link as={`/post/${encodeName(sys.id)}`} href="/post/[name]">
-      <div className="flex justify-center mt-10 mb-20 cursor-pointer">
-        <div className="w-1/3">
+      <div className="flex justify-center lg:mt-10 lg:mb-20 cursor-pointer">
+        <div className="px-16 lg:px-0 lg:w-1/3">
           <div className="flex justify-center">
             <Image image={fields.heroImage} />
           </div>
