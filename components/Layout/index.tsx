@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Header from './Header';
 import Footer from './Footer';
 
-function Layout({ children, title = 'Country Escapes' }) {
+function Layout({ children, title = 'The Ruff Guide' }) {
   return (
     <>
       <Head>
