@@ -9,8 +9,6 @@ export interface HomePageLayout {
 
 export interface Post {
   readonly title: string;
-  readonly location: string;
   readonly heroImage: Asset;
   readonly content: { data: any; content: any; nodeType: string };
-  readonly locReal: { lat: string; lon: string };
 }

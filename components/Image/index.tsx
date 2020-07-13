@@ -13,8 +13,9 @@ function Image({ image, onClick = () => {} }: Props) {
   });
 
   return (
-    <div
-      className="block w-full h-full bg-grey-dark bg-no-repeat bg-center bg-cover cursor-pointer rounded-md overflow-hidden"
+    <img
+      src={source}
+      className="block w-full h-full bg-grey-dark bg-no-repeat bg-center bg-cover rounded-md overflow-hidden"
       onClick={onClick}
       onKeyDown={(event) => {
         if (event.keyCode === 13) onClick();
@@ -22,7 +23,6 @@ function Image({ image, onClick = () => {} }: Props) {
       // eslint-disable-next-line jsx-a11y/aria-role
       role="widget"
       style={{
-        backgroundImage: `url(${source})`,
         transition: 'filter .3s ease',
         filter: !hasLoaded ? 'blur(3px' : 'unset'
       }}

@@ -1,3 +1,7 @@
+function comingSoon() {
+  alert('Coming Soon!');
+}
+
 function Footer() {
   return (
     <footer className="bg-black text-white h-56 pt-12 text-sm mt-20">
@@ -7,22 +11,32 @@ function Footer() {
             <ul>
               <li className="mb-3 font-bold">The Ruff Guide</li>
               <li className="mb-2">
-                <a href="">Privacy Policy</a>
+                <a onClick={comingSoon} href="">
+                  Privacy Policy
+                </a>
               </li>
               <li className="mb-2">
-                <a href="">About Us</a>
+                <a onClick={comingSoon} href="">
+                  About Us
+                </a>
               </li>
               <li className="mb-2">
-                <a href="">Contact</a>
+                <a onClick={comingSoon} href="">
+                  Contact
+                </a>
               </li>
             </ul>
             <ul>
               <li className="mb-3 font-bold">Follow Us</li>
               <li className="mb-2">
-                <a href="">Instagram</a>
+                <a onClick={comingSoon} href="">
+                  Instagram
+                </a>
               </li>
               <li className="mb-2">
-                <a href="">Facebook</a>
+                <a onClick={comingSoon} href="">
+                  Facebook
+                </a>
               </li>
             </ul>
           </div>

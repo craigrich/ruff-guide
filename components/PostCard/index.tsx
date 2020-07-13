@@ -10,18 +10,16 @@ interface Props {
 
 function PostCard({ post }: Props): JSX.Element {
   const { fields, sys } = post;
+
   return (
-    <Link as={`/post/${encodeName(fields.location)}`} href="/post/[name]">
-      <div className="lg:w-1/3 md:mx-4 lg:h-1/3 cursor-pointer ">
-        <div className="h-40 lg:h-56 ">
-          <Image image={fields.heroImage} />
-        </div>
-        <div className="pt-4 pb-0 h-auto md:h-40 lg:h-40">
-          <div className="font-semibold mb-2 text-lg md:text-base lg:text-lg ">
-            {fields.title}
+    <Link as={`/post/${encodeName(sys.id)}`} href="/post/[name]">
+      <div className="flex justify-center mt-10 mb-20 cursor-pointer">
+        <div className="w-1/3">
+          <div className="flex justify-center">
+            <Image image={fields.heroImage} />
           </div>
-          <div className="text-sm leading-relaxed block md:text-xs lg:text-sm">
-            Example description text
+          <div className="font-semibold my-4 text-2xl text-center">
+            {fields.title}
           </div>
         </div>
       </div>
