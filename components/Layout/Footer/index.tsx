@@ -4,7 +4,7 @@ function comingSoon() {
 
 function Footer() {
   return (
-    <footer className="bg-black text-white h-56 pt-12 text-sm mt-20">
+    <footer className="bg-black text-white pb-10 lg:pb-10 mt-10 lg:mt-0 lg:h-56 pt-12 text-sm lg:mt-20">
       <div className="container mx-auto">
         <div className="px-4">
           <div className="md:flex justify-between ">
@@ -27,7 +27,7 @@ function Footer() {
               </li>
             </ul>
             <ul>
-              <li className="mb-3 font-bold">Follow Us</li>
+              <li className="mb-3 font-bold mt-8 lg:mt-0">Follow Us</li>
               <li className="mb-2">
                 <a onClick={comingSoon} href="">
                   Instagram

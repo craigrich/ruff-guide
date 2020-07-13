@@ -40,7 +40,7 @@ function PostPage({ postData }: Props) {
   return (
     <Layout>
       <div className="container mx-auto">
-        <h1 className="text-3xl lg:text-6xl capitalize text-center">
+        <h1 className="text-3xl lg:text-6xl px-8 lg:px-0 capitalize text-center">
           {fields.title}
         </h1>
         <div className="px-8 lg:px-0">
