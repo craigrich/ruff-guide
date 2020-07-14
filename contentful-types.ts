@@ -9,6 +9,7 @@ export interface HomePageLayout {
 
 export interface Post {
   readonly title: string;
+  readonly slug: string;
   readonly heroImage: Asset;
   readonly content: { data: any; content: any; nodeType: string };
 }

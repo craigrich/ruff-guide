@@ -19,9 +19,8 @@ const Text = ({ children }) => (
 
 const options = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    [BLOCKS.PARAGRAPH]: (_, children) => <Text>{children}</Text>,
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      const { url } = node.data.target.fields.file;
       return (
         <div className="my-8 flex justify-center">
           <div className="lg:w-1/3">
@@ -38,7 +37,12 @@ function PostPage({ postData }: Props) {
   const { content } = fields as any;
 
   return (
-    <Layout>
+    <Layout
+      metadata={{
+        title: fields.title,
+        image: fields.heroImage.fields.file.url
+      }}
+    >
       <div className="container mx-auto">
         <h1 className="text-3xl lg:text-6xl px-8 lg:px-0 capitalize text-center">
           {fields.title}
@@ -55,8 +59,14 @@ export async function getStaticPaths() {
   const posts: EntryCollection<Post> = await client.getEntries({
     content_type: 'post'
   });
+  const postsBySlug = posts.items.map(
+    (post) => `/post/${encodeName(post.fields.slug)}`
+  );
+  const postsById = posts.items.map(
+    (post) => `/post/${encodeName(post.sys.id)}`
+  );
   return {
-    paths: posts.items.map((post) => `/post/${encodeName(post.sys.id)}`),
+    paths: postsBySlug.concat(postsById),
     fallback: false
   };
 }
@@ -66,7 +76,9 @@ export async function getStaticProps({ params }) {
     content_type: 'post'
   });
   const postData = posts.items.find(
-    (post) => encodeName(post.sys.id) === params.name
+    (post) =>
+      encodeName(post.fields.slug) === params.name ||
+      encodeName(post.sys.id) === params.name
   );
   return {
     props: {

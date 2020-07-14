@@ -9,10 +9,10 @@ interface Props {
 }
 
 function PostCard({ post }: Props): JSX.Element {
-  const { fields, sys } = post;
+  const { fields } = post;
 
   return (
-    <Link as={`/post/${encodeName(sys.id)}`} href="/post/[name]">
+    <Link as={`/post/${encodeName(fields.slug)}`} href="/post/[name]">
       <div className="flex justify-center lg:mt-10 lg:mb-20 cursor-pointer">
         <div className="px-16 lg:px-0 lg:w-1/3">
           <div className="flex justify-center">
