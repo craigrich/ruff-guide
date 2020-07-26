@@ -1,4 +1,4 @@
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { Post } from 'contentful-types';
 import { EntryCollection, Entry } from 'contentful';
 import Image from 'components/Image';
@@ -17,9 +17,23 @@ const Text = ({ children }) => (
   <p className="text-xl text-center my-8">{children}</p>
 );
 
+const Link = ({ children, href }) => (
+  <a
+    target="_blank"
+    rel="noreferrer"
+    href={href}
+    className="text-blue-500 hover:text-blue-300"
+  >
+    {children}
+  </a>
+);
+
 const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (_, children) => <Text>{children}</Text>,
+    [INLINES.HYPERLINK]: ({ data }, children) => (
+      <Link href={data.uri}>{children}</Link>
+    ),
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
         <div className="my-8 flex justify-center">
