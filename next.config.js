@@ -2,8 +2,8 @@
 
 module.exports = {
   env: {
-    CONTENTFUL_SPACE: 'tqywocep0fhp',
-    CONTENTFUL_ACCESS_TOKEN: 'FmQby4t4SpZqLncvSYDBqPfcuCZdZJ77yAF9xR7G2P8'
+    CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE,
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.resolve.modules = [__dirname, 'node_modules'];
