@@ -1,1 +1,0 @@
-export { NewReviews } from "./NewReviews";

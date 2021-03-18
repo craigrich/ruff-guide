@@ -1,1 +1,0 @@
-export { CriticHighlights } from "./CriticHighlights";
